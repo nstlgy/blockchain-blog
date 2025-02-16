@@ -1,5 +1,6 @@
 import CutCornerButton from "../components/CutCornerButton";
 import Hexagon from "../components/Hexagon";
+import Circle from "../components/Circle";
 
 function HeroSection() {
   return (
@@ -25,6 +26,24 @@ function HeroSection() {
             </div>
             <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Hexagon className="size-[1800px]" />
+            </div>
+            <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Circle className="absolute left-[200px] -top-[900px]">
+                <img
+                  src="/assets/images/cube.png"
+                  alt="cube 3d image"
+                  className="size-[140px]"
+                />
+              </Circle>
+            </div>
+            <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Circle className="absolute left-[200px] top-[270px]">
+                <img
+                  src="/assets/images/cuboid.png"
+                  alt="cube 3d image"
+                  className="size-[140px]"
+                />
+              </Circle>
             </div>
             <img
               src="/assets/images/icosahedron.png"
