@@ -1,4 +1,5 @@
 import CutCornerButton from "../components/CutCornerButton";
+import Hexagon from "../components/Hexagon";
 
 function HeroSection() {
   return (
@@ -18,7 +19,13 @@ function HeroSection() {
           <CutCornerButton className="">Get Started</CutCornerButton>
         </div>
         <div className="flex justify-center mt-24">
-          <div className="inline-flex  relative z-0">
+          <div className="inline-flex relative z-0">
+            <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Hexagon className="size-[1100px]" />
+            </div>
+            <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Hexagon className="size-[1800px]" />
+            </div>
             <img
               src="/assets/images/icosahedron.png"
               alt=""
