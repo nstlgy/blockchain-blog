@@ -66,6 +66,14 @@ function HeroSection() {
             />
           </div>
         </div>
+        <div className="flex flex-col items-center mt-40 md:mt-80 gap-4">
+          <div className="h-10 w-5 outline outline-[6px] outline-fuchsia-500/10 inline-flex justify-center pt-2 rounded-full">
+            <div className="h-3 w-1 bg-fuchsia-500 rounded-full"></div>
+          </div>
+          <p className="uppercase text-zinc-500 font font-extrabold tracking-wider">
+            Scroll to learn more
+          </p>
+        </div>
       </div>
     </section>
   );
