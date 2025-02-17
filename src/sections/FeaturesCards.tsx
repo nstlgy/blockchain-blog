@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge";
+
 const cardData = [
   {
     image: "/assets/images/pill.png",
@@ -31,17 +33,35 @@ const cardData = [
 
 function FeaturesCards() {
   return (
-    <section className="py-24 overflow-x-clip">
+    <section className="py-24 overflow-x-clip md:-mt-28">
       <div className="container">
-        <h2 className="font-heading font-black text-4xl text-center">
+        <h2 className="font-heading font-black text-4xl text-center md:text-5xl lg:text-6xl">
           Discover the future of blockchain with Blockforge.
         </h2>
-        <div className="mt-36 flex">
+        <div className="mt-36 flex lg:mt-48">
           <div className="flex flex-none gap-8">
             {cardData.map(({ image, title, description, color }) => (
-              <div className="relative z-0 p-8 max-w-xs group" key={title}>
-                <div className="absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 blur-lg opacity-0 group-hover:opacity-100 transition duration-300"></div>
-                <div className="absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 group-hover:bg-fuchsia-400 transition duration-300"></div>
+              <div
+                className="relative z-0 p-8 max-w-xs md:max-w-md md:p-10 group"
+                key={title}
+              >
+                <div
+                  className={twMerge(
+                    "absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 blur-lg opacity-0 group-hover:opacity-100 transition duration-300",
+                    color === "lime" && "bg-lime-500",
+                    color === "cyan" && "bg-cyan-500",
+                    color === "violet" && "bg-violet-500",
+                  )}
+                ></div>
+                <div
+                  className={twMerge(
+                    "absolute size-16 rounded-xl bg-fuchsia-500 top-1.5 right-1.5 -z-10 group-hover:bg-fuchsia-400 transition duration-300",
+                    color === "lime" && "bg-lime-500 group-hover:bg-lime-400",
+                    color === "cyan" && "bg-cyan-500 group-hover:bg-cyan-400",
+                    color === "violet" &&
+                      "bg-violet-500 group-hover:bg-violet-400",
+                  )}
+                ></div>
                 <div className="absolute inset-0 bg-zinc-800 -z-10 rounded-2xl [mask-image:linear-gradient(225deg,transparent,transparent_40px,black_40px)]"></div>
                 <div className="flex justify-center -mt-28">
                   <div className="inline-flex relative">
@@ -58,7 +78,14 @@ function FeaturesCards() {
                 </h3>
                 <p className="text-lg text-zinc-400 mt-4">{description}</p>
                 <div className="flex justify-between mt-12">
-                  <button className="text-sm font-heading uppercase font-extrabold tracking-wider text-fuchsia-500">
+                  <button
+                    className={twMerge(
+                      "text-sm font-heading uppercase font-extrabold tracking-wider text-fuchsia-500",
+                      color === "lime" && "text-lime-500",
+                      color === "cyan" && "text-cyan-500",
+                      color === "violet" && "text-violet-500",
+                    )}
+                  >
                     Learn More
                   </button>
                   <svg
@@ -80,11 +107,11 @@ function FeaturesCards() {
             ))}
           </div>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-10">
           <div className="bg-zinc-950 inline-flex gap-4 p-2.5 rounded-full">
-            {[...new Array(4)].fill(0).map((_, i) => (
+            {cardData.map(({ title }) => (
               <div
-                key={i}
+                key={title}
                 className="size-2.5 bg-zinc-500 rounded-full cursor-pointer"
               ></div>
             ))}
