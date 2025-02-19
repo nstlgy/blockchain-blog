@@ -2,8 +2,13 @@ import type { ComponentPropsWithoutRef } from "react";
 import { twMerge } from "tailwind-merge";
 import TextButton from "./TextButton";
 
-function Card(props: ComponentPropsWithoutRef<"div"> & { color?: string }) {
-  const { color, children, className } = props;
+function Card(
+  props: ComponentPropsWithoutRef<"div"> & {
+    color?: string;
+    buttonText?: string;
+  },
+) {
+  const { color, children, className, buttonText } = props;
   return (
     <div className={twMerge("relative z-0 p-8 md:p-10 group", className)}>
       <div
@@ -25,7 +30,7 @@ function Card(props: ComponentPropsWithoutRef<"div"> & { color?: string }) {
       <div className="absolute inset-0 bg-zinc-800 -z-10 rounded-2xl [mask-image:linear-gradient(225deg,transparent,transparent_40px,black_40px)]"></div>
       <div>{children}</div>
       <div className="flex justify-between mt-12">
-        <TextButton color={color}>Learn More</TextButton>
+        <TextButton color={color}>{buttonText || "Learn more"}</TextButton>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
