@@ -24,10 +24,6 @@ function LatestPosts() {
                 Understanding the regulatory landscape surrounding blockchain
                 and what it means for the future of this technology
               </p>
-              <div>
-                <button>Read more</button>
-                <div>arrow</div>
-              </div>
             </Card>
           ))}
         </div>
