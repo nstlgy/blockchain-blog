@@ -1,6 +1,8 @@
 import type { CollectionEntry } from "astro:content";
 import Card from "../components/Card";
 import { getPostColorFromCategory } from "../utils/postUtils";
+import Tag from "../components/Tag";
+import CutCornerButton from "../components/CutCornerButton";
 
 function LatestPosts(props: { latestPosts: CollectionEntry<"blog">[] }) {
   const { latestPosts } = props;
@@ -22,16 +24,17 @@ function LatestPosts(props: { latestPosts: CollectionEntry<"blog">[] }) {
                 buttonText="Read More"
                 color={getPostColorFromCategory(category)}
               >
-                <div className="px-3 py-1.5 uppercase font-heading font-extrabold tracking-wider text-xs bg-fuchsia-500/15 text-fuchsia-500 inline-flex rounded-full">
-                  {category}
-                </div>
-                <h3 className="font-heading font-black text-3xl mt-4">
+                <Tag color={getPostColorFromCategory(category)}>{category}</Tag>
+                <h3 className="font-heading font-black text-3xl mt-3">
                   {title}
                 </h3>
                 <p className="text-lg text-zinc-400 mt-6">{description}</p>
               </Card>
             ),
           )}
+        </div>
+        <div className="flex justify-center mt-48">
+          <CutCornerButton>Read the Blog</CutCornerButton>
         </div>
       </div>
     </section>
