@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge";
+
 const testimonials = [
   {
     text: "The user experience is phenomenal, and the support team is always there to help. Highly recommended!",
@@ -23,9 +25,14 @@ function TestimonialsSection() {
   return (
     <section className="py-32 bg-zinc-800">
       <div className="container">
-        <div className="grid grid-cols-1 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8">
           {testimonials.map((testimonial, testimonialIndex) => (
-            <blockquote key={testimonialIndex}>
+            <blockquote
+              key={testimonialIndex}
+              className={twMerge(
+                testimonialIndex === 2 && "md:hidden lg:block",
+              )}
+            >
               <p className="font-heading text-3xl font-black">
                 &ldquo;{testimonial.text}&rdquo;
               </p>
