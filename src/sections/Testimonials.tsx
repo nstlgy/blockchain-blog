@@ -25,7 +25,7 @@ function TestimonialsSection() {
   return (
     <section className="py-32 bg-zinc-800">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-8 lg:gap-12">
           {testimonials.map((testimonial, testimonialIndex) => (
             <blockquote
               key={testimonialIndex}
@@ -33,7 +33,7 @@ function TestimonialsSection() {
                 testimonialIndex === 2 && "md:hidden lg:block",
               )}
             >
-              <p className="font-heading text-3xl font-black">
+              <p className="font-heading text-3xl lg:text-4xl font-black">
                 &ldquo;{testimonial.text}&rdquo;
               </p>
               <cite className="mt-8 block">
