@@ -1,9 +1,26 @@
 import CutCornerButton from "../components/CutCornerButton";
 import Hexagon from "../components/Hexagon";
 import Circle from "../components/Circle";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 function HeroSection() {
+  const icosahedronRef = useRef(null);
+  const cubeRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: icosahedronRef,
+    offset: ["start end", "end start"],
+  });
+
+  const { scrollYProgress: cubeScrollYProgress } = useScroll({
+    target: cubeRef,
+    offset: ["start end", "end start"],
+  });
+
+  const icosahedronRotate = useTransform(scrollYProgress, [0, 1], [30, -45]);
+  const cubeRotate = useTransform(cubeScrollYProgress, [0, 1], [100, -45]);
+
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
       <div className="container">
@@ -30,10 +47,14 @@ function HeroSection() {
             </div>
             <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute left-[200px] -top-[900px]">
-                <img
+                <motion.img
                   src="/assets/images/cube.png"
                   alt="cube 3d image"
                   className="size-[140px]"
+                  ref={cubeRef}
+                  style={{
+                    rotate: cubeRotate,
+                  }}
                 />
               </Circle>
             </div>
@@ -55,16 +76,24 @@ function HeroSection() {
                 />
               </Circle>
             </div>
-            <img
-              src="/assets/images/icosahedron.png"
-              alt=""
-              className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-[10%] brightness-[4%] hue-rotate-[24deg]"
-            />
-            <img
-              src="/assets/images/icosahedron.png"
-              alt=""
-              className="w-[500px]"
-            />
+            <motion.div
+              className="inline-flex"
+              style={{
+                rotate: icosahedronRotate,
+              }}
+              ref={icosahedronRef}
+            >
+              <img
+                src="/assets/images/icosahedron.png"
+                alt=""
+                className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-[10%] brightness-[4%] hue-rotate-[24deg]"
+              />
+              <img
+                src="/assets/images/icosahedron.png"
+                alt=""
+                className="w-[500px]"
+              />
+            </motion.div>
           </div>
         </div>
         <div className="flex flex-col items-center mt-40 md:mt-80 gap-4">
