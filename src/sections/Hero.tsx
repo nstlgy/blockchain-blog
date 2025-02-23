@@ -7,6 +7,8 @@ import { useRef } from "react";
 function HeroSection() {
   const icosahedronRef = useRef(null);
   const cubeRef = useRef(null);
+  const torusRef = useRef(null);
+  const cuboidRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: icosahedronRef,
@@ -18,8 +20,20 @@ function HeroSection() {
     offset: ["start end", "end start"],
   });
 
+  const { scrollYProgress: torusScrollYProgress } = useScroll({
+    target: torusRef,
+    offset: ["start end", "end start"],
+  });
+
+  const { scrollYProgress: cuboidScrollYProgress } = useScroll({
+    target: cuboidRef,
+    offset: ["start end", "end start"],
+  });
+
   const icosahedronRotate = useTransform(scrollYProgress, [0, 1], [30, -45]);
   const cubeRotate = useTransform(cubeScrollYProgress, [0, 1], [100, -45]);
+  const torusRotate = useTransform(torusScrollYProgress, [0, 1], [20, -20]);
+  const cuboidRotate = useTransform(cuboidScrollYProgress, [0, 1], [20, -20]);
 
   return (
     <section className="py-24 md:py-52 overflow-x-clip">
@@ -35,7 +49,9 @@ function HeroSection() {
           data solutions
         </p>
         <div className="flex justify-center mt-10">
-          <CutCornerButton className="">Get Started</CutCornerButton>
+          <CutCornerButton className="inline-block">
+            Get Started
+          </CutCornerButton>
         </div>
         <div className="flex justify-center mt-24">
           <div className="inline-flex relative z-0">
@@ -60,19 +76,27 @@ function HeroSection() {
             </div>
             <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute left-[200px] top-[270px]">
-                <img
+                <motion.img
                   src="/assets/images/cuboid.png"
                   alt="cuboid 3d image"
                   className="size-[140px]"
+                  style={{
+                    rotate: cuboidRotate,
+                  }}
+                  ref={cuboidRef}
                 />
               </Circle>
             </div>
             <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <Circle className="absolute -left-[600px] -top-[80px]">
-                <img
+                <motion.img
                   src="/assets/images/torus.png"
                   alt="torus 3d image"
                   className="size-[140px]"
+                  ref={torusRef}
+                  style={{
+                    rotate: torusRotate,
+                  }}
                 />
               </Circle>
             </div>
